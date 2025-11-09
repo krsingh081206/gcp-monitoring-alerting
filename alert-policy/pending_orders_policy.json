@@ -1,0 +1,26 @@
+{
+  "displayName": "High Order Backlog",
+  "combiner": "OR",
+  "conditions": [
+    {
+      "displayName": "Backlog count is greater than 5 for 5 minutes",
+      "conditionThreshold": {
+        "filter": "metric.type=\"custom.googleapis.com/orders/backlog_count\" AND resource.type=\"global\"",
+        "comparison": "COMPARISON_GT",
+        "thresholdValue": 5,
+        "duration": "300s",
+        "trigger": {
+          "count": 1
+        }
+      }
+    }
+  ],
+  "notificationChannels": [
+    "projects/gcp-xxx-xxxx-dev/notificationChannels/8873727250007794690"
+  ],
+  "documentation": {
+    "content": "The number of pending orders has exceeded 5 for more than 5 minutes. This may indicate a problem with the order processing system.",
+    "mimeType": "text/markdown"
+  }
+}
+
